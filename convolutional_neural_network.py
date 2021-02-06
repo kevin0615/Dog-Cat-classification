@@ -7,6 +7,10 @@ from keras.preprocessing import image
 from keras.preprocessing.image import ImageDataGenerator
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 
 # Part 1 - Data Preprocessing
 
@@ -30,7 +34,10 @@ test_set = test_datagen.flow_from_directory('dataset/test_set',
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 # Part 2 - Building the CNN
 
 # Initialising the CNN
@@ -57,8 +64,11 @@ cnn.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> main
 # Part 3 - Training the CNN
 
 # Compiling the CNN
@@ -69,8 +79,11 @@ cnn.fit(x = training_set, validation_data = test_set, epochs = 25)
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> main
 # Part 4 - Making a single prediction
 
 test_image = image.load_img('dataset/single_prediction/cat_or_dog_1.jpg', target_size = (64, 64))

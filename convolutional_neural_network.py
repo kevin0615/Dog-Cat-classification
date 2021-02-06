@@ -1,9 +1,12 @@
 # Convolutional Neural Network
 
 # Importing the libraries
+import numpy as np
 import tensorflow as tf
+from keras.preprocessing import image
 from keras.preprocessing.image import ImageDataGenerator
-tf.__version__
+
+
 
 # Part 1 - Data Preprocessing
 
@@ -23,6 +26,10 @@ test_set = test_datagen.flow_from_directory('dataset/test_set',
                                             target_size = (64, 64),
                                             batch_size = 32,
                                             class_mode = 'binary')
+
+
+
+
 
 # Part 2 - Building the CNN
 
@@ -48,6 +55,10 @@ cnn.add(tf.keras.layers.Dense(units=128, activation='relu'))
 # Step 5 - Output Layer
 cnn.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
 
+
+
+
+
 # Part 3 - Training the CNN
 
 # Compiling the CNN
@@ -56,16 +67,18 @@ cnn.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accura
 # Training the CNN on the Training set and evaluating it on the Test set
 cnn.fit(x = training_set, validation_data = test_set, epochs = 25)
 
+
+
+
+
 # Part 4 - Making a single prediction
 
-import numpy as np
-from keras.preprocessing import image
 test_image = image.load_img('dataset/single_prediction/cat_or_dog_1.jpg', target_size = (64, 64))
 test_image = image.img_to_array(test_image)
 test_image = np.expand_dims(test_image, axis = 0)
 result = cnn.predict(test_image)
 training_set.class_indices
-if result[0][0] == 1:
+if result[0][0] > 0.5:
     prediction = 'dog'
 else:
     prediction = 'cat'
